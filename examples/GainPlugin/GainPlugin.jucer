@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="qgGBE1" name="GainPlugin" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              cppLanguageStandard="17">
+  <MAINGROUP id="M2BcBc" name="GainPlugin">
+    <GROUP id="{B173FA74-80FD-24B3-9756-E0D7A3418BE2}" name="Source">
+      <FILE id="nvilda" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="PluginProcessor.cpp"/>
+      <FILE id="eHA4Bh" name="PluginProcessor.h" compile="0" resource="0"
+            file="PluginProcessor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" prebuildCommand="&quot;${PROJECT_DIR}&quot;/ext/react-juce/build-tools/hermes-build.sh"
+               externalLibraries="&quot;${PROJECT_DIR}&quot;/ext/react-juce/hermes-build/build/API/hermes/libhermesapi"
+               extraDefs="REACT_JUCE_USE_HERMES=1">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../ext/JUCE/modules"/>
+        <MODULEPATH id="react_juce" path="../../ext/react-juce"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="react_juce" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+</JUCERPROJECT>
