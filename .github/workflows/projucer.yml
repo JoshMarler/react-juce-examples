@@ -1,6 +1,6 @@
 name: Projucer
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 env:
   # Customize the build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -27,12 +27,18 @@ jobs:
         # We'll use this as our working directory for all subsequent commands
         run: mkdir ${{runner.workspace}}/build
 
+      - name: CMake Configure Projucer
+        # Use a bash shell so we can use the same syntax for environment variable
+        # access regardless of the host operating system
+        shell: bash
+        working-directory: ${{runner.workspace}}/build
+        run: cmake $GITHUB_WORKSPACE/ext/JUCE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DJUCE_BUILD_EXTRAS=ON .
+
       - name: Build Projucer
         # Use a bash shell so we can use the same syntax for environment variable
         # access regardless of the host operating system
         shell: bash
         working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE/ext/JUCE -DCMAKE_BUILD_TYPE=$BUILD_TYPE .
         run: cmake --build . --target Projucer --config $BUILD_TYPE
 
       - name: Run Projucer
@@ -40,12 +46,12 @@ jobs:
         # access regardless of the host operating system
         shell: bash
         working-directory: ${{runner.workspace}}/build
-        run: $GITHUB_WORKSPACE/build/extras/Projucer/Projucer_artefacts/Release/Projucer --resave $GITHUB_WORKSPACE/examples/GainPlugin/GainPlugin.jucer
+        if: matrix.os == 'macos-latest'
+        run: extras/Projucer/Projucer_artefacts/Release/Projucer.app/Contents/MacOS/Projucer --resave $GITHUB_WORKSPACE/examples/GainPlugin/GainPlugin.jucer
 
-        # TODO: Can we have this step call a script so that we don't need separate job definitions
-        #       per platform? Use .sh/bash or use python?
-      - name: Build
+      - name: Build GainPlugin
         working-directory: ${{runner.workspace}}/build
         shell: bash
         # Execute the build.
+        if: matrix.os == 'macos-latest'
         run: xcodebuild -project $GITHUB_WORKSPACE/examples/GainPlugin/Builds/MacOSX/GainPlugin.xcodeproj -target "GainPlugin - Standalone Plugin" -config Release
