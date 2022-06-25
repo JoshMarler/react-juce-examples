@@ -13,8 +13,8 @@
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" prebuildCommand="&quot;${PROJECT_DIR}&quot;/ext/react-juce/build-tools/hermes-build.sh"
-               externalLibraries="&quot;${PROJECT_DIR}&quot;/ext/react-juce/hermes-build/build/API/hermes/libhermesapi"
+    <XCODE_MAC targetFolder="Builds/MacOSX" prebuildCommand="../../../../ext/react-juce/build-tools/hermes-build.sh"
+               externalLibraries="../../../../ext/react-juce/hermes-build/build/API/hermes/libhermesapi&#10;"
                extraDefs="REACT_JUCE_USE_HERMES=1">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug"/>
